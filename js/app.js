@@ -98,8 +98,13 @@
 
             feedback.classList.remove('showItem', 'alert', 'alert-success');
             loading.classList.remove('showItem');
+            self.addCustomer(customer);
         }, 4000)
 
+    }
+
+    Display.prototype.addCustomer = function(customer) {
+        console.log(customer);
     }
 
     // clear fields
@@ -118,6 +123,7 @@
         
     
     }
+
 
     // customer constructor function
 
