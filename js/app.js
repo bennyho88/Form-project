@@ -24,7 +24,7 @@
         // console.log(customer);
         const display = new Display();
 
-        // display.feedback(customer);
+        display.feedback(customer);
         display.clearFields();
         
 
@@ -80,6 +80,27 @@
 
         button.disabled = true;
     };
+
+    // show loading and feedback
+
+    Display.prototype.feedback = function(customer) {
+
+        const feedback = document.querySelector('.feedback');
+        const loading = document.querySelector('.loading');
+
+        feedback.classList.add('showItem', 'alert', 'alert-success');
+        loading.classList.add('showItem');
+
+        const self = this;
+        self.hideSubmit();
+
+        setTimeout(function() {
+
+            feedback.classList.remove('showItem', 'alert', 'alert-success');
+            loading.classList.remove('showItem');
+        }, 4000)
+
+    }
 
     // clear fields
 
