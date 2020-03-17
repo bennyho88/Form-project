@@ -104,7 +104,41 @@
     }
 
     Display.prototype.addCustomer = function(customer) {
-        console.log(customer);
+        // console.log(customer);
+
+        const random = this.getRandom();
+
+        const div = document.createElement('div');
+        div.classList.add('col-11', 'mx-auto', 'col-md-6', 'col-lg-4', 'my-3');
+        div.innerHTML = `
+        <div class="card text-left">
+        <img src="img/cust-${random}.jpg" class="card-img-top" alt="">
+        <div class="card-body">
+         <!-- customer name -->
+         <h6 class="text-capitalize "><span class="badge badge-warning mr-2">name :</span><span id="customer-name">${customer.name}</span></h6>
+         <!-- end of customer name -->
+         <!-- customer name -->
+         <h6 class="text-capitalize my-3"><span class="badge badge-success mr-2">${customer.course}</span><span id="customer-course">
+           css basics
+          </span></h6>
+         <!-- end of customer name -->
+         <!-- customer name -->
+         <h6 class="text-capitalize"><span class="badge badge-danger mr-2">author :</span><span id="course-author">${customer.author}</span></h6>
+         <!-- end of customer name -->
+        </div>
+        `
+
+        this.customers.appendChild(div);
+
+    }
+
+    // random number
+
+    Display.prototype.getRandom = function() {
+
+        let random = Math.floor(Math.random() * 5 + 1);
+        
+        return random;
     }
 
     // clear fields
