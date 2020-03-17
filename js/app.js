@@ -10,6 +10,27 @@
         display.hideSubmit();
     })
 
+    // add customer on submit
+    document.getElementById('customer-form').addEventListener('submit', function(event) {
+
+        event.preventDefault();
+
+
+        const name = this.querySelector('.name');
+        const course = this.querySelector('.course');
+        const author = this.querySelector('.author');
+        
+        const customer = new Customer(name.value, course.value, author.value);
+        // console.log(customer);
+        const display = new Display();
+
+        // display.feedback(customer);
+        display.clearFields();
+        
+
+    })
+
+
     // display 
     function Display() {
         this.name = document.getElementById('name');
@@ -41,8 +62,8 @@
        }
 
        const complete = document.querySelectorAll('.complete');
-       console.log(complete.length);
-       
+       // console.log(complete.length);
+
        if(complete.length === 3) {
            document.querySelector('.submitBtn').disabled = false;
            
@@ -58,6 +79,32 @@
         const button = document.querySelector('.submitBtn');
 
         button.disabled = true;
+    };
+
+    // clear fields
+
+    Display.prototype.clearFields = function() {
+
+        // console.log(this);
+        this.name.value = '';
+        this.course.value = '';
+        this.author.value = '';
+
+      
+        this.name.classList.remove('complete', 'fail');
+        this.course.classList.remove('complete', 'fail');
+        this.author.classList.remove('complete', 'fail');
+        
+    
+    }
+
+    // customer constructor function
+
+    function Customer(name, course, author) {
+
+        this.name = name;
+        this.course = course;
+        this.author = author;
     }
 
 })();
